@@ -24,7 +24,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         getHolder().addCallback(this);
         thread = new MainThread(getHolder(), this);
         setFocusable(true);
-       // bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.hinhre);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.hinhre);
     }
 
     @Override

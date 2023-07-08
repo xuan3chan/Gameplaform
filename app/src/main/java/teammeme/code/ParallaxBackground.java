@@ -13,8 +13,8 @@ public class ParallaxBackground {
 
     public ParallaxBackground(Resources c)
     {
-        hinhnen1 = BitmapFactory.decodeResource(c, R.drawable.dat);
-        hinhnen2 = BitmapFactory.decodeResource(c, R.drawable.may);
+        hinhnen1 = BitmapFactory.decodeResource(c, R.drawable.khonggian);
+        hinhnen2 = BitmapFactory.decodeResource(c, R.drawable.hanhtinh);
         //hinhnen3 = BitmapFactory.decodeResource(c, R.drawable.nui);
     }
     public void doDrawRunning(Canvas canvas) {
