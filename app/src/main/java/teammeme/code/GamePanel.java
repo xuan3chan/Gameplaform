@@ -11,6 +11,8 @@ import android.view.SurfaceView;
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     private MainThread thread;
     private Bitmap bitmap;
+    int mX;
+    int mY;
 
     public GamePanel(Context context) {
         super(context);
@@ -54,7 +56,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         super.draw(canvas);
         if (canvas != null) {
             canvas.drawColor(Color.BLACK);
-            canvas.drawBitmap(bitmap, 10, 10, null);
+            canvas.drawBitmap(bitmap, mX, mY, null);
         }
     }
 }
