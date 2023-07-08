@@ -12,6 +12,7 @@ import android.view.SurfaceView;
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     Element myelement;
+    ParallaxBackground background; //bien hinh nen chuyen dong
     private MainThread thread;
     private Bitmap bitmap;
     int mX;
@@ -59,6 +60,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         super.draw(canvas);
         if (canvas != null) {
             canvas.drawColor(Color.BLACK);
+            background.doDrawRunning(canvas);
             //canvas.drawBitmap(bitmap, mX, mY, null);
 
             if (myelement != null)

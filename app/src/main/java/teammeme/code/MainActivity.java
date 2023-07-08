@@ -8,10 +8,12 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity {
-
+ParallaxBackground background;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        background = new ParallaxBackground(this.getResources());
+
 
         //cua so khong co thanh title
         requestWindowFeature(Window.FEATURE_NO_TITLE);
