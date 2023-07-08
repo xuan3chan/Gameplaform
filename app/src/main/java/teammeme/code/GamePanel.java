@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -59,4 +60,12 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             canvas.drawBitmap(bitmap, mX, mY, null);
         }
     }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        // TODO Auto-generated method stub
+        mX=(int)event.getX() - bitmap.getWidth()/2;
+        mY=(int)event.getY() - bitmap.getHeight()/2;
+        return super.onTouchEvent(event);
+    }
+
 }
