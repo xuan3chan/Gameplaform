@@ -12,7 +12,7 @@ public class Element {
 
     public Element(Resources res, int x, int y)
     {
-        bitmap= BitmapFactory.decodeResource(res,R.drawable.hinhre);
+       // bitmap= BitmapFactory.decodeResource(res,R.drawable.hinhre);
         mX=x-bitmap.getWidth()/2;
         mY=y-bitmap.getHeight()/2;
     }
