@@ -5,11 +5,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
+    Element myelement;
     private MainThread thread;
     private Bitmap bitmap;
     int mX;
@@ -57,15 +59,42 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         super.draw(canvas);
         if (canvas != null) {
             canvas.drawColor(Color.BLACK);
-            canvas.drawBitmap(bitmap, mX, mY, null);
+            //canvas.drawBitmap(bitmap, mX, mY, null);
+
+            if (myelement != null)
+                myelement.doDraw(canvas);
         }
     }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         // TODO Auto-generated method stub
-        mX=(int)event.getX() - bitmap.getWidth()/2;
-        mY=(int)event.getY() - bitmap.getHeight()/2;
-        return super.onTouchEvent(event);
-    }
+        if (myelement == null) {
+            myelement = new Element(getResources(), (int) event.getX(), (int) event.getY());
+            Log.d("abc", "khoi tao dau tien");
+            return true;
+        } else {
+            myelement.mX = (int) event.getX() - myelement.bitmap.getWidth() / 2;
+            myelement.mY = (int) event.getY() - myelement.bitmap.getHeight() / 2;
+        }
 
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            myelement.mX = (int) event.getX() - myelement.bitmap.getWidth() / 2;
+            myelement.mY = (int) event.getY() - myelement.bitmap.getHeight() / 2;
+            Log.d("abc", "ddddddddddddddddddddddddddddown");
+        }
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            myelement.mX = (int) event.getX() - myelement.bitmap.getWidth() / 2;
+            myelement.mY = (int) event.getY() - myelement.bitmap.getHeight() / 2;
+            Log.d("abc", "uuuuuuuuuuuuuuuuuuuuuuuuuuuup");
+        }
+        if (event.getAction() == MotionEvent.ACTION_MOVE) {
+            myelement.mX = (int) event.getX() - myelement.bitmap.getWidth() / 2;
+            myelement.mY = (int) event.getY() - myelement.bitmap.getHeight() / 2;
+            Log.d("abc", "mmmmmmmmmmmmmmmmmmmmmmmmmmove");
+        }
+
+        return true;//super.onTouchEvent(event);
+
+    }
 }
