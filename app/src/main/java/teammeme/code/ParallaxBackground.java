@@ -21,9 +21,9 @@ public class ParallaxBackground {
 
     public void doDrawRunning(Canvas canvas) {
         // Update X-coordinate for background 1
-        toadonen1_X -= 1;
+        toadonen1_X -= 10;
         if (toadonen1_X <= -hinhnen1.getWidth()) {
-            toadonen1_X = 0;
+            toadonen1_X =10;
         }
 
         // Update X-coordinate for background 2
@@ -42,10 +42,10 @@ public class ParallaxBackground {
         canvas.drawBitmap(hinhnen1, toadonen1_X, 0, null);
         canvas.drawBitmap(hinhnen1, toadonen1_X + hinhnen1.getWidth(), 0, null);
 
-        canvas.drawBitmap(hinhnen2, toadonen2_X, -80, null);
-        canvas.drawBitmap(hinhnen2, toadonen2_X + hinhnen2.getWidth(), -80, null);
+        canvas.drawBitmap(hinhnen2, toadonen2_X, -100, null);
+        canvas.drawBitmap(hinhnen2, toadonen2_X + hinhnen2.getWidth(), -100, null);
 
-        canvas.drawBitmap(hinhnen3, toadonen3_X, -100, null);
-        canvas.drawBitmap(hinhnen3, toadonen3_X + hinhnen3.getWidth(), -100, null);
+        canvas.drawBitmap(hinhnen3, toadonen3_X, -180, null);
+        canvas.drawBitmap(hinhnen3, toadonen3_X + hinhnen3.getWidth(), -180, null);
     }
 }

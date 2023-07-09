@@ -16,12 +16,7 @@ public class Element {
         mX=x-bitmap.getWidth()/2;
         mY=y-bitmap.getHeight()/2;
     }
-    public Element(Resources res, int x, int y, int idHinh)
-    {
-        bitmap=BitmapFactory.decodeResource(res,idHinh);
-        mX=x-bitmap.getWidth()/2;
-        mY=y-bitmap.getHeight()/2;
-    }
+
     public void doDraw(Canvas canvas)
     {
         canvas.drawBitmap(bitmap, mX,mY, null);
