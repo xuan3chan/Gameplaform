@@ -24,6 +24,11 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     int mX;
     int mY;
 
+    ArrayList<Enemies> enemies=new ArrayList<Enemies>();
+    int thoigiankethu=0;//thoi gian ra ke thu, 10 se ra
+    Enemies motkethu;
+
+
     public GamePanel(Context context) {
         super(context);
         background=new ParallaxBackground(this.getResources());
@@ -70,15 +75,18 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             canvas.drawColor(Color.BLACK);
             background.doDrawRunning(canvas);
             thoigiannapdan++;
+            thoigiankethu++;
             //canvas.drawBitmap(bitmap, mX, mY, null);
 
             if (myelement != null){
                 myelement.doDraw(canvas);
                 this.doDrawBullet(canvas);
+                this.doDrawEnemies(canvas);
 //                viendan.doDraw(canvas);
             }
         }
     }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -139,6 +147,24 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                 bullets.remove(i);
 
         Log.d("viendan", "sovien: "+bullets.size());
+        
+    }
+    public void doDrawEnemies(Canvas canvas) {
+        if(thoigiankethu>=10)
+        {
+            thoigiankethu=0;
+            Enemies motkethu=new Enemies(getResources(),
+                    canvas.getWidth(),canvas.getHeight());
+            enemies.add(motkethu);
+        }
+        for(int i=0;i<enemies.size();i++)
+            enemies.get(i).doDraw(canvas);
+
+        for(int i=0;i<enemies.size();i++)
+            if(enemies.get(i).y<0)
+                enemies.remove(i);
+        Log.d("viendan","so vien: "+enemies.size());
+
     }
 
 }
