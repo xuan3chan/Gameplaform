@@ -23,7 +23,7 @@ public class ParallaxBackground {
         // Update X-coordinate for background 1
         toadonen1_X -= 10;
         if (toadonen1_X <= -hinhnen1.getWidth()) {
-            toadonen1_X =10;
+            toadonen1_X =toadonen1_X+hinhnen1.getWidth();
         }
 
         // Update X-coordinate for background 2

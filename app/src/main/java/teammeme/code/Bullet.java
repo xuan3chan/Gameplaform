@@ -9,7 +9,7 @@ public class Bullet {
     int x;
     int y;
     Bitmap bitmap;
-    int tocdo=20;
+    int tocdo=30;
 
     public Bullet(Resources res, int x, int y)
     {
