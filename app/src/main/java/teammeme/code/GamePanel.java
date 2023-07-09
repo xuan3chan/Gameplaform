@@ -151,7 +151,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         
     }
     public void doDrawEnemies(Canvas canvas) {
-        if(thoigiankethu>=65)
+
+        if(thoigiankethu>=58)
         {
             thoigiankethu=0;
             Enemies motkethu=new Enemies(getResources(),
@@ -187,6 +188,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
     public  void xetvacham(Canvas canvas)
     {
+
         try{
             for(int i=0;i<bullets.size();i++)
                 for(int j=0;j<enemies.size();j++)
@@ -202,7 +204,10 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         {
             Log.d("loi",e.toString());
         }
-        canvas.drawText("Score:"+score,80,80,null);
+        Paint p=new Paint();
+        p.setColor(Color.WHITE);
+        p.setTextSize(50);
+        canvas.drawText("Score:"+score,500,70,p);
 
     }
 

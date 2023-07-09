@@ -12,7 +12,7 @@ public class Enemies {
     int x;
     int y;
     Bitmap bitmap;
-    int []tocdo={5,7,30};
+    int []tocdo={7,9,30};
     int []manghinh={R.drawable.camlansuc,
             R.drawable.caube,
             R.drawable.miko};
