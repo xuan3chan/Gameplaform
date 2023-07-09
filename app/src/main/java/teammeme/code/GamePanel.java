@@ -10,8 +10,12 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import java.util.ArrayList;
+
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     Element myelement;
+    ArrayList<Bullet> bullets=new ArrayList<Bullet>();
+//    Bullet viendan;
     ParallaxBackground background; //bien hinh nen chuyen dong
     private MainThread thread;
     private Bitmap bitmap;
@@ -21,6 +25,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     public GamePanel(Context context) {
         super(context);
         background=new ParallaxBackground(this.getResources());
+//        viendan = new Bullet(getResources(),0,0,R.drawable.lua);
         getHolder().addCallback(this);
         thread = new MainThread(getHolder(), this);
         setFocusable(true);
@@ -64,8 +69,11 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             background.doDrawRunning(canvas);
             //canvas.drawBitmap(bitmap, mX, mY, null);
 
-            if (myelement != null)
+            if (myelement != null){
                 myelement.doDraw(canvas);
+                this.doDrawBullet(canvas);
+//                viendan.doDraw(canvas);
+            }
         }
     }
 
@@ -100,4 +108,16 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         return true;//super.onTouchEvent(event);
 
     }
+    //ve tap hop cac vien dan
+    public void doDrawBullet(Canvas canvas)
+    {
+        Bullet viendan=
+                new Bullet(getResources(), myelement.mX, myelement.mY,R.drawable.lua);
+
+        bullets.add(viendan);
+        for(int i=0;i<bullets.size();i++)
+            bullets.get(i).doDraw(canvas);
+
+    }
+
 }
