@@ -82,6 +82,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                 myelement.doDraw(canvas);
                 this.doDrawBullet(canvas);
                 this.doDrawEnemies(canvas);
+                xetvacham(canvas);
 //                viendan.doDraw(canvas);
             }
         }
@@ -166,5 +167,42 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         Log.d("viendan","so vien: "+enemies.size());
 
     }
+
+    public boolean vc_b_e(Bullet bullet,Enemies enemies)
+    {
+
+        float nuarong_b=(float)bullet.getWidth()/2;
+        int nuacao_b=bullet.getHeight()/2;
+        float nuarong_e=(float)enemies.getWidth()/2;
+        int nuacao_e=enemies.getHeight()/2;
+        //khoang cach 2 tam theo x
+        int kc_ht_x=Math.abs(bullet.gettamX()-enemies.gettamX());
+        //khoang cach 2 tam theo y
+        int kc_ht_y=Math.abs(bullet.gettamY()-enemies.gettamY());
+        if(kc_ht_x<=nuarong_b+nuarong_e && kc_ht_y<=nuacao_b+nuacao_e)
+            return true;
+        else
+            return false;
+    }
+
+    public  void xetvacham(Canvas canvas)
+    {
+        try{
+            for(int i=0;i<bullets.size();i++)
+                for(int j=0;j<enemies.size();j++)
+                {
+                    if(vc_b_e(bullets.get(i), enemies.get(j))==true)
+                    {
+                        bullets.remove(i);
+                        enemies.remove(j);
+                    }
+                }
+        }catch(Exception e)
+        {
+            Log.d("loi",e.toString());
+        }
+
+    }
+
 
 }

@@ -46,5 +46,26 @@ public class Enemies {
         this.y=y;
     }
 
+    public int getWidth()
+    {
+        return bitmap.getWidth();
+    }
+    public int getHeight()
+    {
+        return bitmap.getHeight();
+    }
+    public int gettamX()
+    {
+        //tam x=toa do x cong voi nua rong
+        return x+(bitmap.getWidth()/2);
+    }
+
+    public int gettamY()
+    {
+        //tam y=toa do y cong nua cao
+        return y+(bitmap.getHeight()/2);
+    }
+
+
 }
 
