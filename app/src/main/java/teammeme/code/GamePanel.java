@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     Element myelement;
     ArrayList<Bullet> bullets=new ArrayList<Bullet>();
+    int thoigiannapdan=0; //bang 10 moi ban tiep duoc, tao do tre khi ban
 //    Bullet viendan;
     ParallaxBackground background; //bien hinh nen chuyen dong
     private MainThread thread;
@@ -67,6 +69,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         if (canvas != null) {
             canvas.drawColor(Color.BLACK);
             background.doDrawRunning(canvas);
+            thoigiannapdan++;
             //canvas.drawBitmap(bitmap, mX, mY, null);
 
             if (myelement != null){
@@ -111,12 +114,22 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     //ve tap hop cac vien dan
     public void doDrawBullet(Canvas canvas)
     {
-        Bullet viendan=
-                new Bullet(getResources(), myelement.mX, myelement.mY,R.drawable.lua);
+        Paint p=new Paint();
+        p.setColor(Color.WHITE);
+        p.setTextSize(20);
+        canvas.drawText("napdan:"+thoigiannapdan, 20, 20,p);
 
-        bullets.add(viendan);
+        if(thoigiannapdan>=10)
+        {
+            thoigiannapdan=0;
+            Bullet motviendan=
+                    new Bullet(getResources(), myelement.mX, myelement.mY,R.drawable.lua);
+
+            bullets.add(motviendan);
+        }
         for(int i=0;i<bullets.size();i++)
             bullets.get(i).doDraw(canvas);
+
 
     }
 
