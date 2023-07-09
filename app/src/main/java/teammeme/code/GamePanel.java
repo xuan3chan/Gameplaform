@@ -119,7 +119,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         p.setTextSize(20);
         canvas.drawText("napdan:"+thoigiannapdan, 20, 20,p);
 
-        if(thoigiannapdan>=10)
+        if(thoigiannapdan>=30)
         {
             thoigiannapdan=0;
             Bullet motviendan=
@@ -127,10 +127,10 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
             bullets.add(motviendan);
         }
-        for(int i=0;i<bullets.size();i++)
+        for(int i=0;i<bullets.size();i++){
             bullets.get(i).doDraw(canvas);
-
-
+        }
+        Log.d("viendan", "sovien: "+bullets.size());
     }
 
 }
