@@ -120,9 +120,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         int rectBottom = 10;
         Paint p=new Paint();
         p.setColor(Color.WHITE);
-        p.setTextSize(20);
+        p.setTextSize(50);
         canvas.drawRect(rectLeft, rectTop, rectRight, rectBottom, p);
-        canvas.drawText("napdan:"+thoigiannapdan, -100, 20,p);
+        canvas.drawText("Nạp đạn:"+thoigiannapdan*10, 70, 70,p);
 
         if(thoigiannapdan>=30)
         {
