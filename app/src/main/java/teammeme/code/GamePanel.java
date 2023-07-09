@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -15,29 +17,39 @@ import java.util.ArrayList;
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     Element myelement;
-    ArrayList<Bullet> bullets=new ArrayList<Bullet>();
-    int thoigiannapdan=0; //bang 10 moi ban tiep duoc, tao do tre khi ban
-//    Bullet viendan;
-    ParallaxBackground background; //bien hinh nen chuyen dong
+    ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+    int thoigiannapdan = 0; // bang 10 moi ban tiep duoc, tao do tre khi ban
+    ParallaxBackground background; // bien hinh nen chuyen dong
     private MainThread thread;
     private Bitmap bitmap;
     int mX;
     int mY;
     int score = 0;
+    private SoundPool soundPool;
+    private int enemyAppearSound;
+    private int enemyDestroySound;
+    private AudioManager audioManager;
+    private float volume;
 
-    ArrayList<Enemies> enemies=new ArrayList<Enemies>();
-    int thoigiankethu=0;//thoi gian ra ke thu, 10 se ra
+    ArrayList<Enemies> enemies = new ArrayList<Enemies>();
+    int thoigiankethu = 0; // thoi gian ra ke thu, 10 se ra
     Enemies motkethu;
-
 
     public GamePanel(Context context) {
         super(context);
-        background=new ParallaxBackground(this.getResources());
-//        viendan = new Bullet(getResources(),0,0,R.drawable.lua);
+        background = new ParallaxBackground(this.getResources());
         getHolder().addCallback(this);
         thread = new MainThread(getHolder(), this);
         setFocusable(true);
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.hinhre);
+        soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        enemyAppearSound = soundPool.load(context, R.raw.kimchihanquoc, 1);
+        enemyDestroySound = soundPool.load(context, R.raw.miko_canhinh, 1);
+
+        audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        volume = (float) currentVolume / maxVolume;
     }
 
     @Override
@@ -158,6 +170,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             Enemies motkethu=new Enemies(getResources(),
                     canvas.getWidth(),canvas.getHeight());
             enemies.add(motkethu);
+            soundPool.play(enemyAppearSound, volume, volume, 1, 0, 1.0f);
         }
         for(int i=0;i<enemies.size();i++)
             enemies.get(i).doDraw(canvas);
@@ -198,6 +211,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                         bullets.remove(i);
                         enemies.remove(j);
                         score += 1;
+                        soundPool.play(enemyDestroySound, volume, volume, 1, 0, 2f);
                     }
                 }
         }catch(Exception e)
