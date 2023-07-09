@@ -114,10 +114,15 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     //ve tap hop cac vien dan
     public void doDrawBullet(Canvas canvas)
     {
+        int rectLeft = 10;
+        int rectTop = 30;
+        int rectRight = rectLeft + (thoigiannapdan * 10);
+        int rectBottom = 10;
         Paint p=new Paint();
         p.setColor(Color.WHITE);
         p.setTextSize(20);
-        canvas.drawText("napdan:"+thoigiannapdan, 20, 20,p);
+        canvas.drawRect(rectLeft, rectTop, rectRight, rectBottom, p);
+        canvas.drawText("napdan:"+thoigiannapdan, -100, 20,p);
 
         if(thoigiannapdan>=30)
         {
@@ -127,9 +132,12 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
             bullets.add(motviendan);
         }
-        for(int i=0;i<bullets.size();i++){
+        for(int i=0;i<bullets.size();i++)
             bullets.get(i).doDraw(canvas);
-        }
+        for(int i=0;i<bullets.size();i++)
+            if(bullets.get(i).x>canvas.getWidth())
+                bullets.remove(i);
+
         Log.d("viendan", "sovien: "+bullets.size());
     }
 
