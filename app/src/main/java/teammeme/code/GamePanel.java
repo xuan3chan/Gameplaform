@@ -170,7 +170,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             Enemies motkethu=new Enemies(getResources(),
                     canvas.getWidth(),canvas.getHeight());
             enemies.add(motkethu);
-            soundPool.play(enemyAppearSound, volume, volume, 1, 0, 1.0f);
+            soundPool.play(enemyAppearSound, volume, volume, 10, 0, 1.0f);
         }
         for(int i=0;i<enemies.size();i++)
             enemies.get(i).doDraw(canvas);
@@ -211,7 +211,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                         bullets.remove(i);
                         enemies.remove(j);
                         score += 1;
-                        soundPool.play(enemyDestroySound, volume, volume, 1, 0, 2f);
+                        soundPool.play(enemyDestroySound, volume, volume, 10, 0, 1f);
                     }
                 }
         }catch(Exception e)
