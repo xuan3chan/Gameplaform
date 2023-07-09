@@ -23,6 +23,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     private Bitmap bitmap;
     int mX;
     int mY;
+    int score = 0;
 
     ArrayList<Enemies> enemies=new ArrayList<Enemies>();
     int thoigiankethu=0;//thoi gian ra ke thu, 10 se ra
@@ -132,7 +133,6 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         p.setTextSize(50);
         canvas.drawRect(rectLeft, rectTop, rectRight, rectBottom, p);
         canvas.drawText("Nạp đạn:"+thoigiannapdan*10, 70, 70,p);
-
         if(thoigiannapdan>=30)
         {
             thoigiannapdan=0;
@@ -195,12 +195,14 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                     {
                         bullets.remove(i);
                         enemies.remove(j);
+                        score += 1;
                     }
                 }
         }catch(Exception e)
         {
             Log.d("loi",e.toString());
         }
+        canvas.drawText("Score:"+score,80,80,null);
 
     }
 
