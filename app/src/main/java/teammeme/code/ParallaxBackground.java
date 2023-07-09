@@ -42,10 +42,10 @@ public class ParallaxBackground {
         canvas.drawBitmap(hinhnen1, toadonen1_X, 0, null);
         canvas.drawBitmap(hinhnen1, toadonen1_X + hinhnen1.getWidth(), 0, null);
 
-        canvas.drawBitmap(hinhnen2, toadonen2_X, 0, null);
-        canvas.drawBitmap(hinhnen2, toadonen2_X + hinhnen2.getWidth(), 0, null);
+        canvas.drawBitmap(hinhnen2, toadonen2_X, -80, null);
+        canvas.drawBitmap(hinhnen2, toadonen2_X + hinhnen2.getWidth(), -80, null);
 
-        canvas.drawBitmap(hinhnen3, toadonen3_X, 4, null);
-        canvas.drawBitmap(hinhnen3, toadonen3_X + hinhnen3.getWidth(), 0, null);
+        canvas.drawBitmap(hinhnen3, toadonen3_X, -100, null);
+        canvas.drawBitmap(hinhnen3, toadonen3_X + hinhnen3.getWidth(), -100, null);
     }
 }
