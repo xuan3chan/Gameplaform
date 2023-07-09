@@ -151,7 +151,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         
     }
     public void doDrawEnemies(Canvas canvas) {
-        if(thoigiankethu>=70)
+        if(thoigiankethu>=65)
         {
             thoigiankethu=0;
             Enemies motkethu=new Enemies(getResources(),
