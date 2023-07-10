@@ -44,7 +44,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.hinhre);
         soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
         enemyAppearSound = soundPool.load(context, R.raw.kimchihanquoc, 1);
-        enemyDestroySound = soundPool.load(context, R.raw.miko_canhinh, 1);
+        enemyDestroySound = soundPool.load(context, R.raw.caubesound, 1);
 
         audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
@@ -170,7 +170,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             Enemies motkethu=new Enemies(getResources(),
                     canvas.getWidth(),canvas.getHeight());
             enemies.add(motkethu);
-            soundPool.play(enemyAppearSound, volume, volume, 10, 0, 1.0f);
+            //soundPool.play(enemyAppearSound, volume, volume, 10, 0, 1.0f);
         }
         for(int i=0;i<enemies.size();i++)
             enemies.get(i).doDraw(canvas);
