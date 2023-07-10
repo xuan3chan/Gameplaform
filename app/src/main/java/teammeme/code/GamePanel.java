@@ -30,6 +30,13 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     private int enemyDestroySound;
     private AudioManager audioManager;
     private float volume;
+    //varskill
+    private Skills skillButton1;
+    private Skills skillButton2;
+    private Skills skillButton3;
+    private boolean isSkill1Activated;
+    private boolean isSkill2Activated;
+    private boolean isSkill3Activated;
 
     ArrayList<Enemies> enemies = new ArrayList<Enemies>();
     int thoigiankethu = 0; // thoi gian ra ke thu, 10 se ra
@@ -42,9 +49,14 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         thread = new MainThread(getHolder(), this);
         setFocusable(true);
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.hinhre);
+        //khaisusound
         soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
         enemyAppearSound = soundPool.load(context, R.raw.kimchihanquoc, 1);
         enemyDestroySound = soundPool.load(context, R.raw.caubesound, 1);
+        //khaicontructorskill
+        skillButton1 = new Skills(getResources(), R.drawable.skill1_button, 100, 100, 200, 200, 1);
+        skillButton2 = new Skills(getResources(), R.drawable.skill2_button, 300, 100, 400, 200, 2);
+        skillButton3 = new Skills(getResources(), R.drawable.skill3_button, 500, 100, 600, 200, 3);
 
         audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
@@ -99,6 +111,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 //                viendan.doDraw(canvas);
             }
         }
+            skillButton1.draw(canvas);
+            skillButton2.draw(canvas);
+            skillButton3.draw(canvas);
     }
 
 
@@ -129,6 +144,63 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             myelement.mY = (int) event.getY() - myelement.bitmap.getHeight() / 2;
             Log.d("abc", "mmmmmmmmmmmmmmmmmmmmmmmmmmove");
         }
+        //touchskill
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            if (skillButton1.contains((int) event.getX(), (int) event.getY())) {
+                isSkill1Activated = true;
+                activateSkill1();
+            } else if (skillButton2.contains((int) event.getX(), (int) event.getY())) {
+                isSkill2Activated = true;
+                activateSkill2();
+            } else if (skillButton3.contains((int) event.getX(), (int) event.getY())) {
+                isSkill3Activated = true;
+                activateSkill3();
+            }
+        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+            isSkill1Activated = false;
+            isSkill2Activated = false;
+            isSkill3Activated = false;
+        }
+
+// Thêm các phương thức mới để xử lý kích hoạt kỹ năng:
+        private void activateSkill1() {
+            if (isSkill1Activated) {
+                // Bắn 5 viên đạn tỏa ra hướng trước
+                // Thêm mã xử lý tạo đạn và di chuyển đạn theo hướng mong muốn
+            }
+        }
+
+        private void activateSkill2() {
+            if (isSkill2Activated) {
+                // Bắn 5 viên đạn hình vòng tròn về phía trước
+                // Thêm mã xử lý tạo đạn và di chuyển đạn theo hướng mong muốn
+            }
+        }
+
+        private void activateSkill3() {
+            if (isSkill3Activated) {
+                // Bắn 5 viên đạn nhanh về phía trước
+                // Thêm mã xử lý tạo đạn và di chuyển đạn theo hướng mong muốn
+            }
+        }
+
+// Trong phương thức update, kiểm tra xem các kỹ năng đã được kích hoạt hay chưa và thực hiện xử lý tương ứng:
+        public void update() {
+            // Các phần xử lý cập nhật khác
+
+            if (isSkill1Activated) {
+                // Thực hiện cập nhật cho kỹ năng 1
+            }
+
+            if (isSkill2Activated) {
+                // Thực hiện cập nhật cho kỹ năng 2
+            }
+
+            if (isSkill3Activated) {
+                // Thực hiện cập nhật cho kỹ năng 3
+            }
+        }
+
 
         return true;//super.onTouchEvent(event);
 
@@ -224,6 +296,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         canvas.drawText("Score:"+score,500,70,p);
 
     }
+
 
 
 }
