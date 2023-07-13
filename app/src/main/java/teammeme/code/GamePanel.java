@@ -54,9 +54,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         enemyAppearSound = soundPool.load(context, R.raw.kimchihanquoc, 1);
         enemyDestroySound = soundPool.load(context, R.raw.caubesound, 1);
         //khaicontructorskill
-        skillButton1 = new Skills(getResources(), R.drawable.skill1_button, 100, 100, 200, 200, 1);
-        skillButton2 = new Skills(getResources(), R.drawable.skill2_button, 300, 100, 400, 200, 2);
-        skillButton3 = new Skills(getResources(), R.drawable.skill3_button, 500, 100, 600, 200, 3);
+//        skillButton1 = new Skills(getResources(), R.drawable.skill1_button, 100, 100, 200, 200, 1);
+//        skillButton2 = new Skills(getResources(), R.drawable.skill2_button, 300, 100, 400, 200, 2);
+//        skillButton3 = new Skills(getResources(), R.drawable.skill3_button, 500, 100, 600, 200, 3);
 
         audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
@@ -145,63 +145,63 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             Log.d("abc", "mmmmmmmmmmmmmmmmmmmmmmmmmmove");
         }
         //touchskill
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            if (skillButton1.contains((int) event.getX(), (int) event.getY())) {
-                isSkill1Activated = true;
-                activateSkill1();
-            } else if (skillButton2.contains((int) event.getX(), (int) event.getY())) {
-                isSkill2Activated = true;
-                activateSkill2();
-            } else if (skillButton3.contains((int) event.getX(), (int) event.getY())) {
-                isSkill3Activated = true;
-                activateSkill3();
-            }
-        } else if (event.getAction() == MotionEvent.ACTION_UP) {
-            isSkill1Activated = false;
-            isSkill2Activated = false;
-            isSkill3Activated = false;
-        }
+//        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//            if (skillButton1.contains((int) event.getX(), (int) event.getY())) {
+//                isSkill1Activated = true;
+//                activateSkill1();
+//            } else if (skillButton2.contains((int) event.getX(), (int) event.getY())) {
+//                isSkill2Activated = true;
+//                activateSkill2();
+//            } else if (skillButton3.contains((int) event.getX(), (int) event.getY())) {
+//                isSkill3Activated = true;
+//                activateSkill3();
+//            }
+//        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+//            isSkill1Activated = false;
+//            isSkill2Activated = false;
+//            isSkill3Activated = false;
+//        }
 
 // Thêm các phương thức mới để xử lý kích hoạt kỹ năng:
-        private void activateSkill1() {
-            if (isSkill1Activated) {
-                // Bắn 5 viên đạn tỏa ra hướng trước
-                // Thêm mã xử lý tạo đạn và di chuyển đạn theo hướng mong muốn
-            }
-        }
-
-        private void activateSkill2() {
-            if (isSkill2Activated) {
-                // Bắn 5 viên đạn hình vòng tròn về phía trước
-                // Thêm mã xử lý tạo đạn và di chuyển đạn theo hướng mong muốn
-            }
-        }
-
-        private void activateSkill3() {
-            if (isSkill3Activated) {
-                // Bắn 5 viên đạn nhanh về phía trước
-                // Thêm mã xử lý tạo đạn và di chuyển đạn theo hướng mong muốn
-            }
-        }
-
-// Trong phương thức update, kiểm tra xem các kỹ năng đã được kích hoạt hay chưa và thực hiện xử lý tương ứng:
-        public void update() {
-            // Các phần xử lý cập nhật khác
-
-            if (isSkill1Activated) {
-                // Thực hiện cập nhật cho kỹ năng 1
-            }
-
-            if (isSkill2Activated) {
-                // Thực hiện cập nhật cho kỹ năng 2
-            }
-
-            if (isSkill3Activated) {
-                // Thực hiện cập nhật cho kỹ năng 3
-            }
-        }
-
-
+//        private void activateSkill1() {
+//            if (isSkill1Activated) {
+//                // Bắn 5 viên đạn tỏa ra hướng trước
+//                // Thêm mã xử lý tạo đạn và di chuyển đạn theo hướng mong muốn
+//            }
+//        }
+//
+//        private void activateSkill2() {
+//            if (isSkill2Activated) {
+//                // Bắn 5 viên đạn hình vòng tròn về phía trước
+//                // Thêm mã xử lý tạo đạn và di chuyển đạn theo hướng mong muốn
+//            }
+//        }
+//
+//        private void activateSkill3() {
+//            if (isSkill3Activated) {
+//                // Bắn 5 viên đạn nhanh về phía trước
+//                // Thêm mã xử lý tạo đạn và di chuyển đạn theo hướng mong muốn
+//            }
+//        }
+//
+//// Trong phương thức update, kiểm tra xem các kỹ năng đã được kích hoạt hay chưa và thực hiện xử lý tương ứng:
+//        public void update() {
+//            // Các phần xử lý cập nhật khác
+//
+//            if (isSkill1Activated) {
+//                // Thực hiện cập nhật cho kỹ năng 1
+//            }
+//
+//            if (isSkill2Activated) {
+//                // Thực hiện cập nhật cho kỹ năng 2
+//            }
+//
+//            if (isSkill3Activated) {
+//                // Thực hiện cập nhật cho kỹ năng 3
+//            }
+//        }
+//
+//
         return true;//super.onTouchEvent(event);
 
     }
